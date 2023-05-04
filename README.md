@@ -1,0 +1,1 @@
+# Thermisch-model-blanke-geleiders
