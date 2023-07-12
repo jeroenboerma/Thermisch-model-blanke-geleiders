@@ -56,3 +56,21 @@ At the top of this script, after calling libraries and functions, the ambient te
 - select single ambient temperature and single current. Result is a single curve.
 - select single ambient temperture and array of currents. Result is a plot with a curve per current.
 - select array of ambient temperature and single current. Result is a plot with a curve per ambient temperature.
+
+After selecting the ambient temperature and current empty arrays are created to fill in the for loop. The for-loop iterates over the array of Te or I and calls the warm-up curve for every combination of Te and I. The warm-up curves are plotted, and if there is more than one current value assigned, the dependency between the current and final temperature is plotted. The last plot shows the heat flows. "k" refers to the curve number if multple curves are plotted.
+
+IMPORTANT: This script can mainly be used to check whether the outcome of the model corresponds with values listed in load capacity tables. To determine the new load capacity it is better to use the next script.
+
+**The sixth script is Det_Imax.py**
+In this script you have THREE possibilities:
+- select single ambient temperature and single current. Result is a single curve.
+- select single ambient temperture and array of currents. Result is a plot with a curve per current.
+- select array of ambient temperature and single current. Result is a plot with a curve per ambient temperature.
+
+Also, fill in the nominal current as listed by the ABB pocket book. 
+This script outputs load capacity values expressed either in ampere or percentage of the nominal current. To choose which one you want, put "Yes" or "No" behind I_want_the_load_capacity_in_percent_of_Inom.
+The script calculates the load capacity based on an heat balance, this happens inside the for-loop. After the loop, the relevant temperatures are set from Kelvin to degrees Celsius.
+Depending on which combination of ambient temperature and current the model outputs either a graph showing the relation between ambient temperature or maximum temperature versus the load capacity, or prints out a single value.
+
+**General remark**
+Script 1,2,3 and 4 are essential to run either script 5 or 6. 5 and 6 themselves are independent of each other. My advise is to always have all 6 scripts open in consecutive order. When using the model, you should only need to change parameters in script 1 Properties.py and in script 5 or 6 I_vs_Te.py and Det_Imax.py. Only Temperature_profile.py is used to change the run time. 
